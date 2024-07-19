@@ -22,6 +22,6 @@ public class Plane extends GeometricObject
     {
         double t = point3D.sub(ray.origin).dot(normal)/ray.direction.dot(normal);
         if(t > 10E-8) return t;
-        return 0;
+        return 0.0;
     }
 }

@@ -19,7 +19,14 @@ public class Sphere extends GeometricObject
 
     @Override
     public double hit(Ray ray) {
+        double a = ray.direction.dot(ray.direction);
+        double b = 2*ray.origin.sub(center).dot(ray.direction);
+        double c = ray.origin.sub(center).dot(ray.origin.sub(center)) - radius*radius;
+        double discriminant = b*b - 4*a*c;
 
-        return 0;
+        if(discriminant < 0) return 0.0;
+        double t = (-b - Math.sqrt(discriminant))/(2*a);
+        if(t > 10E-9) return t;
+        return 0.0;
     }
 }
