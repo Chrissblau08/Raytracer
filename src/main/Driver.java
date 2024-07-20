@@ -3,6 +3,7 @@ package main;
 import geometry.Sphere;
 import projection.Orthographic;
 import projection.Projection;
+import sampling.JitteredSample;
 import sampling.RegularSample;
 import sampling.Sampler;
 import scene.World;
@@ -24,6 +25,7 @@ public class Driver
         image = new Image("Image.png");
         tracer = new Tracer();
         sampler = new RegularSample(4);
+        //sampler = new JitteredSample(8);
         projection = new Orthographic();
 
         long start = System.nanoTime();
