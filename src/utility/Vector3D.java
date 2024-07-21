@@ -33,6 +33,11 @@ public class Vector3D
         return new Vector3D(x - vector.x, y - vector.y, z - vector.z);
     }
 
+    public Vector3D multi(double scalar)
+    {
+        return new Vector3D(x*scalar,y*scalar,z*scalar);
+    }
+
     public double dot(Vector3D vector)
     {
         return x * vector.x + y * vector.y + z * vector.z;
@@ -56,4 +61,11 @@ public class Vector3D
         z /= magnitude;
     }
 
+    public Vector3D cross(Vector3D v) {
+        return new Vector3D(
+                this.y * v.z - this.z * v.y,
+                this.z * v.x - this.x * v.z,
+                this.x * v.y - this.y * v.x
+        );
+    }
 }

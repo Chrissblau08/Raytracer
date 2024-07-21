@@ -2,6 +2,7 @@ package main;
 
 import geometry.Sphere;
 import projection.Orthographic;
+import projection.Perspective;
 import projection.Projection;
 import sampling.JitteredSample;
 import sampling.RegularSample;
@@ -21,17 +22,14 @@ public class Driver
 
 
     public static void main(String[] args){
-        world = new World(1600, 900, 0.3);
+        world = new World(1600, 900, 1.0);
         image = new Image("Image.png");
         tracer = new Tracer();
         sampler = new RegularSample(4);
         //sampler = new JitteredSample(8);
-        projection = new Orthographic();
+        projection = new Perspective(new Point3D(-200.0,200.0, 600.0), new Point3D(0.0,0.0,0.0), 30.0);
 
         long start = System.nanoTime();
-
-        Random r = new Random();
-        Sphere sphere = new Sphere(new Point3D(0,0,0),60,new Color(1,0,0,0));
 
         for (int i = 0; i < world.viewPlane.height;i++) {
             for (int j = 0; j < world.viewPlane.width; j++) {
